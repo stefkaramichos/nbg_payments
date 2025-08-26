@@ -1,0 +1,1 @@
+{style src="addons/ds_ethniki/styles.less"}

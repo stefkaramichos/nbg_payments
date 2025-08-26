@@ -1,0 +1,1 @@
+<script src="https://ibanke-commerce.nbg.gr/form/version/100/merchant/{$addons.ds_ethniki.merchant_id}/session.js"></script>

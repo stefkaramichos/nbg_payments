@@ -1,0 +1,90 @@
+.ethiniki-payment-session {
+      font-family: Arial, sans-serif;
+      background-color: rgba(0, 0, 0, 0.5);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: fixed;
+      width: 100%;
+      top: 0px;
+      z-index: 10000;
+
+      .modal {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      width: 320px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .input-group-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .input-group.half {
+      flex: 1;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #035f74;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #004e60;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .ds_ethniki_total_amout_text{
+      text-align: center;
+      font-size: 11px;
+    }
+    .ds_ethniki_total_amout{
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      position: relative;
+      bottom: 10px;
+    }
+  
+}
+
+    
