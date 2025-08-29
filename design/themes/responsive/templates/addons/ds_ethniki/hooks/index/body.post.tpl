@@ -1,5 +1,5 @@
 {if $runtime.controller == 'checkout' && !$order_info.ds_transaction_id && $runtime.mode == 'complete'  && $order_info.payment_method.payment_id == $addons.ds_ethniki.payment_id}
-{fn_ds_ethniki_change_order_status($order_info.order_id, 'N')}
+{fn_ds_ethniki_change_order_status_ds($order_info.order_id, 'N')}
 <div class="ethiniki-payment-session">
     {literal}<style id="antiClickjack">body{display:none !important;}</style>{/literal}
     <script>
