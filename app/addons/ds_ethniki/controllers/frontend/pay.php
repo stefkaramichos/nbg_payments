@@ -228,7 +228,11 @@ if ($finalAuthStatus === 'AUTHENTICATION_SUCCESSFUL') {
                               ($payResponse['transaction'][0]['transaction']['transactionId'] ?? '');
 
             db_query("UPDATE ?:orders SET ds_transaction_id = ?s WHERE order_id = ?i", $transaction_id, $order_id);
+<<<<<<< HEAD
             fn_ds_ethniki_change_order_status_ds($orderId, 'O', true);
+=======
+            fn_ds_ethniki_change_order_status_ds($orderId, 'O', false);
+>>>>>>> 73c10fdc90621ab9c4464cd215f547ff90470df2
 
             if ($debug_mode === 'Y') {
                 error_log("✅ Updated ds_transaction_id for order #$order_id: $transaction_id");
@@ -243,7 +247,11 @@ if ($finalAuthStatus === 'AUTHENTICATION_SUCCESSFUL') {
         ]);
         exit;
     } else {
+<<<<<<< HEAD
         fn_ds_ethniki_change_order_status_ds($orderId, 'F', true);
+=======
+        fn_ds_ethniki_change_order_status_ds($orderId, 'F', false);
+>>>>>>> 73c10fdc90621ab9c4464cd215f547ff90470df2
         $gatewayCode = $payResponse['response']['gatewayCode'] ?? 'N/A';
         $acquirerMessage = $payResponse['response']['acquirerMessage'] ?? '';
         error_log("❌ Payment not captured. Order status: $orderStatus. Gateway: $gatewayCode. Message: $acquirerMessage");
