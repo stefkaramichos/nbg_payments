@@ -120,8 +120,9 @@ if ($authStatus !== 'AUTHENTICATION_SUCCESSFUL') {
     if ($debug_mode === 'Y') {
         error_log("❌ Authentication failed or not completed: $authStatus");
     }
-    fn_ds_ethniki_change_order_status($orderId, 'F');
-    Tygh::$app['view']->assign('text_page_result', "<h1>❌ Η ταυτοποίηση 3DS απέτυχε.</h1>");
+    fn_ds_ethniki_change_order_status_ds($orderId, 'F', true);
+    Tygh::$app['view']->assign('text_page_result', "❌ Η ταυτοποίηση 3DS απέτυχε.");
+    Tygh::$app['view']->assign('heading_page_result', "Αποτυχία Πληρωμής");
     return;
 }
 
@@ -188,8 +189,9 @@ $orderStatus = $payResponse['order']['status'] ?? null;
 
 // Step 3: Handle Response
 if ($payResponse && $orderStatus === 'CAPTURED') {
-    fn_ds_ethniki_change_order_status($orderId, 'O');
+    fn_ds_ethniki_change_order_status_ds($orderId, 'O', true);
     Tygh::$app['view']->assign('text_page_result', "✅ Πληρωμή ολοκληρώθηκε με επιτυχία!");
+    Tygh::$app['view']->assign('heading_page_result', "Eπιτυχής Πληρωμή");
 
     if (preg_match('/ord_(\d+)/', $orderId, $matches)) {
         $order_id = (int)$matches[1];
@@ -209,12 +211,13 @@ if ($payResponse && $orderStatus === 'CAPTURED') {
 } else { 
     $transaction_id = fn_ds_ethniki_get_transaction_id($orderId);
     if(!$transaction_id){
-        fn_ds_ethniki_change_order_status($orderId, 'F', false);
+        fn_ds_ethniki_change_order_status_ds($orderId, 'F', true);
         $gatewayCode = $payResponse['response']['gatewayCode'] ?? 'N/A';
         $acquirerMessage = $payResponse['response']['acquirerMessage'] ?? '';
         error_log("❌ Payment not captured. Order status: $orderStatus. Gateway: $gatewayCode. Message: $acquirerMessage");
         error_log("❌ Full payResponse: " . json_encode($payResponse));
         Tygh::$app['view']->assign('text_page_result', "❌ Η πληρωμή απέτυχε."); 
+        Tygh::$app['view']->assign('heading_page_result', "Αποτυχία Πληρωμής");
     }
 }
  

@@ -1,8 +1,7 @@
 <?php
 
-// if (!defined('BOOTSTRAP')) { die('Access denied'); }
+if (!defined('BOOTSTRAP')) { die('Access denied'); }
 
-// fn_register_hooks(
-//     'place_order',
-//     'order_placement_routines'
-// );   
+fn_register_hooks(
+    'change_order_status'
+);   
